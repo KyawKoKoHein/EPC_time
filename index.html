@@ -139,15 +139,15 @@
                 resultDiv.classList.add('alert-info');
 
                 // Check if the current time is within the time slot
-                if (isCurrentTimeInSlot(timeSlotString)) {
-                    timeCheckDiv.textContent = `ယခု မီးလာနေပါသည်။`;
-                    timeCheckResultDiv.classList.remove('d-none', 'alert-danger');
-                    timeCheckResultDiv.classList.add('alert-success');
-                } else {
-                    timeCheckDiv.textContent = `ယခု မီးပျက်နေပါသည်။`;
-                    timeCheckResultDiv.classList.remove('d-none', 'alert-success');
-                    timeCheckResultDiv.classList.add('alert-danger');
-                }
+                // if (isCurrentTimeInSlot(timeSlotString)) {
+                //     timeCheckDiv.textContent = `ယခု မီးလာနေပါသည်။`;
+                //     timeCheckResultDiv.classList.remove('d-none', 'alert-danger');
+                //     timeCheckResultDiv.classList.add('alert-success');
+                // } else {
+                //     timeCheckDiv.textContent = `ယခု မီးပျက်နေပါသည်။`;
+                //     timeCheckResultDiv.classList.remove('d-none', 'alert-success');
+                //     timeCheckResultDiv.classList.add('alert-danger');
+                // }
             } else {
                 timeSlotSpan.textContent = 'No schedule available.';
                 resultDiv.classList.remove('d-none', 'alert-info');
