@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +10,11 @@
             background-color: #f8f9fa;
             padding: 20px;
         }
-
         .result {
             margin-top: 20px;
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <h1 class="text-center mb-4">Group Schedule Checker</h1>
@@ -113,7 +110,7 @@
         }
 
         // Handle form submission
-        document.getElementById('scheduleForm').addEventListener('submit', function (event) {
+        document.getElementById('scheduleForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form submission
 
             const group = document.getElementById('group').value;
@@ -138,21 +135,28 @@
                 resultDiv.classList.remove('d-none', 'alert-danger');
                 resultDiv.classList.add('alert-info');
 
-                // Check if the current time is within the time slot
-                // if (isCurrentTimeInSlot(timeSlotString)) {
-                //     timeCheckDiv.textContent = `ယခု မီးလာနေပါသည်။`;
-                //     timeCheckResultDiv.classList.remove('d-none', 'alert-danger');
-                //     timeCheckResultDiv.classList.add('alert-success');
-                // } else {
-                //     timeCheckDiv.textContent = `ယခု မီးပျက်နေပါသည်။`;
-                //     timeCheckResultDiv.classList.remove('d-none', 'alert-success');
-                //     timeCheckResultDiv.classList.add('alert-danger');
-                // }
+                // Check if the selected date is today's date
+                if (date === today) {
+                    // Only show the time check alert if the selected date is today
+                    if (isCurrentTimeInSlot(timeSlotString)) {
+                        timeCheckDiv.textContent = `ယခု မီးလာနေပါသည်။`;
+                        timeCheckResultDiv.classList.remove('d-none', 'alert-danger');
+                        timeCheckResultDiv.classList.add('alert-success');
+                    } else {
+                        timeCheckDiv.textContent = `ယခု မီးပျက်နေပါသည်။`;
+                        timeCheckResultDiv.classList.remove('d-none', 'alert-success');
+                        timeCheckResultDiv.classList.add('alert-danger');
+                    }
+                } else {
+                    // Hide the time check result for other days
+                    timeCheckResultDiv.classList.add('d-none');
+                }
             } else {
                 timeSlotSpan.textContent = 'No schedule available.';
                 resultDiv.classList.remove('d-none', 'alert-info');
                 resultDiv.classList.add('alert-danger');
 
+                // Hide the time check result if no schedule found
                 timeCheckResultDiv.classList.add('d-none');
             }
         });
@@ -171,5 +175,4 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
