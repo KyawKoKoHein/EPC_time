@@ -108,7 +108,7 @@
                     const hours = Math.floor(remainingSeconds / 3600);
                     const minutes = Math.floor((remainingSeconds % 3600) / 60);
                     const seconds = remainingSeconds % 60;
-                    element.textContent = `မီးပျက်နေပါသည်။ မီးပြန်လာရန် ${hours} hr: ${minutes} min: ${seconds} sec လိုပါသေးသည်။`;
+                    element.textContent = `မီးပျက်နေပါသည်။ မီးပြန်လာရန် ${hours} hour(s) : ${minutes} minute(s) : ${seconds} second(s) လိုပါသေးသည်။`;
                     remainingSeconds--;
                 }
             }, 1000);
@@ -143,7 +143,7 @@
                     const slots = timeSlotString.split(',').map(slot => slot.trim());
                     let isInsideSlot = false;
                     for (const slot of slots) {
-                        const [startTime, endTime] = slot.split('->').map(time => parseTime(time.trim()));
+                        const [startTime, endTime] = slot.split('=>').map(time => parseTime(time.trim()));
                         if (currentMinutes >= startTime && currentMinutes <= endTime) {
                             isInsideSlot = true;
                             break;
@@ -155,7 +155,7 @@
                         timeCheckResultDiv.classList.add('d-none');
                     } else {
                         for (const slot of slots) {
-                            const [startTime, endTime] = slot.split('->').map(time => parseTime(time.trim()));
+                            const [startTime, endTime] = slot.split('=>').map(time => parseTime(time.trim()));
                             if (currentMinutes < startTime) {
                                 const minutesLeft = startTime - currentMinutes;
                                 startLiveCountdown(minutesLeft, timeCheckDiv);
